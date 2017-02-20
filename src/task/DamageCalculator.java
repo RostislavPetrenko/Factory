@@ -2,11 +2,11 @@ package task;
 
 public class DamageCalculator {
 	private ItemInfo screwsInfo;
-	private ItemInfo nutskInfo;
+	private ItemInfo nutsInfo;
 
 	public DamageCalculator(ItemInfo boltsInfo, ItemInfo gaiskInfo) {
 		this.screwsInfo = boltsInfo;
-		this.nutskInfo = gaiskInfo;
+		this.nutsInfo = gaiskInfo;
 	}
 
 	public int getActualDamage() {
@@ -14,7 +14,7 @@ public class DamageCalculator {
 	}
 	private int getDamageFromUnpairedItems() {
 		int screwsActualAmount = screwsInfo.getActualAmount();
-		int nutsActualAmount = nutskInfo.getActualAmount();
+		int nutsActualAmount = nutsInfo.getActualAmount();
 		int damageFromUnpaired;
 
 		if (screwsActualAmount > nutsActualAmount) {
@@ -22,13 +22,13 @@ public class DamageCalculator {
 		} else if (screwsActualAmount == nutsActualAmount) {
 			damageFromUnpaired = 0;
 		} else {
-			damageFromUnpaired = (nutsActualAmount - screwsActualAmount) * nutskInfo.pricePerItem;
+			damageFromUnpaired = (nutsActualAmount - screwsActualAmount) * nutsInfo.pricePerItem;
 		}
 		return damageFromUnpaired;
 	}
 
 	private int getDamageFromNuts() {
-		return nutskInfo.getLostAmount() * nutskInfo.pricePerItem;
+		return nutsInfo.getLostAmount() * nutsInfo.pricePerItem;
 	}
 
 	private int getDamageFromScrews() {
