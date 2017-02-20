@@ -1,4 +1,4 @@
-package likeaboss;
+package task;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +17,5 @@ public class FileWriter {
 		String output = "" + actualDamage;
 		writer.write(output);
 		writer.flush();
-		System.out.println(newFile.getAbsolutePath());
 	}
 }

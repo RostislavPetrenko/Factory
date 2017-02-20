@@ -1,4 +1,4 @@
-package likeaboss;
+package task;
 
 public class ItemInfo {
 	public int totalAmount;
