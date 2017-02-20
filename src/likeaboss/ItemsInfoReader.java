@@ -1,25 +1,38 @@
 package likeaboss;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ItemsInfoReader {
 
-	private Scanner scan;
-	private ArrayList<Integer> list;
 	private ItemInfo bolts;
 	private ItemInfo gaiks;
 
 	public ItemsInfoReader(String inputFile) throws IOException {
-		list = new ArrayList<Integer>();
-		scan = new Scanner(new File(inputFile));
+		readFile(inputFile);
+	}
+
+	private void readFile(String inputFile) throws FileNotFoundException {
+		Scanner scan = new Scanner(new File(inputFile));
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
 		while (scan.hasNext()) {
 			list.add(scan.nextInt());
 		}
-		bolts = new ItemInfo(list.get(0), list.get(1), list.get(2));
-		gaiks = new ItemInfo(list.get(3), list.get(4), list.get(5));
+
+		int totalAmountB = list.get(0);
+		int percentageOfLossB = list.get(1);
+		int pricePerItemB = list.get(2);
+		int totalAmountG = list.get(3);
+		int percentageOfLossG = list.get(4);
+		int pricePerItemG = list.get(5);
+
+		bolts = new ItemInfo(totalAmountB, percentageOfLossB, pricePerItemB);
+		gaiks = new ItemInfo(totalAmountG, percentageOfLossG, pricePerItemG);
+		scan.close();
 	}
 
 	public ItemInfo getBoltsInfo() {
